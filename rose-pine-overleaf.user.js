@@ -31,14 +31,40 @@ GM_addStyle ( `
   --lineChanged: #44415a80; /* Highlight */
   --editorActiveLine: #2a273f;
 
+/* Rose Pine Moon */
+
+.tok-typeName {
+  color: #c4a7e7 !important; /* Iris */
+  font-style: italic;
+}
+
+.tok-punctuation {
+  color: #908caa !important; /* Subtle */
+}
+
+.tok-keyword {
+  color: #eb6f92 !important; /* Love */
+  font-weight: 600;
+}
+
+.tok-attributeValue {
+  color: #f6c177 !important; /* Gold */
+}
+
+.tok-literal {
+  color: #9ccfd8 !important; /* Foam */
+}
+
+
+
   /* UI Elements */
   --editor-toolbar-bg: var(--bg-color);
   --bs-dropdown-bg: var(--bg-color);
-  --dropdown-background: #232136;
   --bs-dropdown-header-color: var(--textColor);
   --actionColor: var(--accentColor) !important;
   --link-ui: var(--accentColor) !important;
   --backgroundColor: var(--bg-color) !important;
+  --dropdown-background: #232136;
   --headerColor: var(--bg-color) !important;
   --file-tree-item-selected-bg: var(--accentColor) !important;
   --bs-nav-link-color: var(--accentColor) !important;
