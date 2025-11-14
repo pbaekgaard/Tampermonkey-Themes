@@ -21,7 +21,7 @@ GM_addStyle ( `
   --accentColorSecondary: #9ccfd8;
 
   /* Cursor */
-  --cursorColor: #f6c177; /* Gold */
+  --cursorColor: var(--accentColor); /* Accent color */
 
   /* Text */
   --textColor: #e0def4 !important; /* Text */
