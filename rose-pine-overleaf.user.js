@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         Overleaf Ayu Theme
+// @name         Overleaf Rose Pine Moon Theme
 // @namespace    http://tampermonkey.net/
-// @version      2024-12-19
-// @description  try to take over the world!
+// @version      2024-12-20
+// @description  A soft, rosy Moon palette for Overleaf
 // @author       pbaekgaard
 // @match        https://www.overleaf.com/project/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=overleaf.com
@@ -10,18 +10,28 @@
 // ==/UserScript==
 
 GM_addStyle ( `
-:root {
-  --bg-color: #0f1419 !important;
-  --bg-color-secondary: color-mix(in srgb, var(--bg-color) 92%, white 8%);
-  --accentColor: #ffcc66 !important;
-  --cursorColor: #f29718;
-  --toolbar-header-btn-border-color: var(--bg-color);
-  --accentColorSecondary: #ffcc66;
-  --textColor: #afb5c0 !important;
-  --editorTextColor: #fff;
-  --lineChanged: #ffcc6680;
-  --editorActiveLine: var(--bg-color);
 
+:root {
+  /* Base colors */
+  --bg-color: #232136 !important; /* Base */
+  --bg-color-secondary: color-mix(in srgb, var(--bg-color) 85%, white 15%);
+
+  /* Accent / Rose Pine */
+  --accentColor: #c4a7e7 !important; /* Iris */
+  --accentColorSecondary: #9ccfd8;
+
+  /* Cursor */
+  --cursorColor: #f6c177; /* Gold */
+
+  /* Text */
+  --textColor: #e0def4 !important; /* Text */
+  --editorTextColor: #f4efff;
+
+  /* Changed lines / Highlights */
+  --lineChanged: #44415a80; /* Highlight */
+  --editorActiveLine: #2a273f;
+
+  /* UI Elements */
   --editor-toolbar-bg: var(--bg-color);
   --bs-dropdown-bg: var(--bg-color);
   --bs-dropdown-header-color: var(--textColor);
@@ -31,12 +41,18 @@ GM_addStyle ( `
   --headerColor: var(--bg-color) !important;
   --file-tree-item-selected-bg: var(--accentColor) !important;
   --bs-nav-link-color: var(--accentColor) !important;
+
+  /* Borders and outlines */
   --outline-bg-color: var(--bg-color-secondary);
   --toolbar-filetree-bg-color: var(--bg-color-secondary);
   --editor-resizer-bg-color: var(--bg-color-secondary);
   --outline-border-color: var(--bg-color-secondary);
   --toolbar-border-color: var(--bg-color-secondary);
+
+  /* Optional: tweak if needed */
+  --toolbar-header-btn-border-color: var(--bg-color);
 }
+
 
 
 * {
@@ -50,9 +66,6 @@ GM_addStyle ( `
 --collapsible-file-header-bg-color: var(--panel-heading-color);
 }
 
-.loading-panel {
-	background-color: var(--backgroundColor);
-}
 
 .cm-fat-cursor {
     background-color: var(--cursorColor) !important;
@@ -75,18 +88,13 @@ GM_addStyle ( `
 	z-index: 1;
 }
 
-
-.file-tree ul.file-tree-list li .entity-name:hover::before {
-	background-color: var(--lineChanged);
-	content: " ";
-	left: -9999px;
-	position: absolute;
-	width: 9999px;
+.pdf .toolbar.toolbar-pdf {
+	background-color: var(--backgroundColor);
+	height: var(--toolbar-small-height);
+	margin-left: 0;
+	padding-right: var(--spacing-03);
 }
 
-.file-tree ul.file-tree-list li .entity-name:hover {
-	background-color: var(--lineChanged);
-}
 
 .outline-header-expand-collapse-btn {
 	align-items: center;
@@ -101,6 +109,23 @@ GM_addStyle ( `
 	text-align: left;
 	vertical-align: inherit;
 	white-space: nowrap;
+}
+
+
+.file-tree ul.file-tree-list li .entity-name:hover::before {
+	background-color: var(--lineChanged);
+	content: " ";
+	left: -9999px;
+	position: absolute;
+	width: 9999px;
+}
+
+.loading-panel {
+	background-color: var(--backgroundColor);
+}
+
+.file-tree ul.file-tree-list li .entity-name:hover {
+	background-color: var(--lineChanged);
 }
 
 .dropdown-item:focus, .dropdown-item:hover {
@@ -440,7 +465,7 @@ color: var(--accentColor) !important;
 
 .review-panel-new .review-panel-entry.review-panel-entry-highlighted, .review-panel-new .review-panel-entry.review-panel-entry-selected {
 	border: 1px solid var(--accentColor);
-	box-shadow: 0 4px 12px 0 rgba(30,37,48,.12),0 2px 4px rgba(30,37,48,.08);
+	box-shadow: 0 4px 12px 0 rgba(35,33,54,.12),0 2px 4px rgba(35,33,54,.08);
 	margin-left: var(--spacing-01);
 }
 
@@ -470,7 +495,7 @@ color: var(--accentColor) !important;
 }
 
 .d-inline-grid.btn.btn-primary.btn-sm:hover {
-	background-color: rgb(127, 198, 103);
+	background-color: rgb(214, 192, 255);
 	color: var(--backgroundColor);
 }
 
@@ -480,7 +505,7 @@ color: var(--accentColor) !important;
 }
 
 .review-panel-new .review-panel-entry-header .review-panel-entry-time {
-	color: rgba(112, 145, 101, 1);
+	color: rgba(196, 167, 231, 1);
 }
 
 .review-panel-new .review-panel-comment-body {
@@ -493,7 +518,7 @@ color: var(--accentColor) !important;
 
 .review-panel-new .review-panel-comment-input {
 	background-color: var(--backgroundColor);
-	border: solid 1px rgb(77, 106, 67);
+	border: solid 1px rgb(110, 106, 134);
 	border-radius: var(--border-radius-base);
 	color: var(--textColor);
 	font-size: var(--rp-base-font-size);
@@ -560,7 +585,7 @@ color: var(--accentColor) !important;
 
 .d-inline-grid.btn.btn-secondary:hover {
 	color: var(--backgroundColor);
-	background-color: rgba(111, 143, 100, 1);
+	background-color: rgba(165, 140, 208, 1);
 	border: none;
 }
 
@@ -615,7 +640,7 @@ color: var(--accentColor) !important;
 
 
 .ol-cm-changed-line {
-	background-color: rgba(0, 0, 0, 0.03);
+	background-color: rgba(35, 33, 54, 0.15);
 	color: var(--textColor);
 }
 
@@ -786,7 +811,7 @@ color: var(--textColor);
 }
 
 .file-tree ul.file-tree-list li .entity > .entity-name > button.item-name-button {
- color:#d3d4d8;
+ color:#e0def4;
 }
 
 .file-tree:not(.multi-selected) ul.file-tree-list li.selected > .entity > .entity-name > button > span {
@@ -815,18 +840,18 @@ transform: translate(180px, 34px) !important;
 
 
 .rp-state-current-file-expanded .rp-entry {
-	background-color: #22293e;
+	background-color: #2a273f;
 }
 
 .rp-comment-input {
 	background-color: var(--editorActiveLine);
-	border: solid 1px #888;
+	border: solid 1px #6e6a86;
 	color: var(--textColor);
 }
 
 .rp-nav-item-active {
-	border-top: 3px solid #a2d591;
-	color: #a2d591;
+	border-top: 3px solid #c4a7e7;
+	color: #c4a7e7;
 }
 
 .rp-nav {
@@ -842,7 +867,7 @@ transform: translate(180px, 34px) !important;
 }
 
 .rp-entry-metadata {
-	color: #8d939d;
+	color: #908caa;
 }
 
 .rp-comment-actions > button {
@@ -869,10 +894,10 @@ transform: translate(180px, 34px) !important;
 }
 
 .review-panel {
-	background-color: #dadfed;
+	background-color: #2e2a45;
 	border-left: solid 0 var(--editorActiveLine);
 	box-sizing: content-box;
-	color: #6b7797;
+	color: #908caa;
 	flex-shrink: 0;
 	font-family: var(--bs-font-sans-serif);
 	font-size: var(--rp-base-font-size);
@@ -896,7 +921,7 @@ transform: translate(180px, 34px) !important;
 
 .toggle-switch-label {
 	color: var(--content-secondary);
-	color: #d3d4d8;
+	color: #e0def4;
 }
 
 .toggle-switch {
@@ -938,7 +963,7 @@ transform: translate(180px, 34px) !important;
 }
 
 .loading-panel {
-	background-color: #22293e;
+	background-color: #2a273f;
 }
 
 .loading {
@@ -946,7 +971,7 @@ transform: translate(180px, 34px) !important;
 }
 
 .loading-screen {
- background-color :#22293e;
+ background-color :#2a273f;
 }
 
 .loading-screen .loading-screen-label {
@@ -954,7 +979,7 @@ transform: translate(180px, 34px) !important;
 }
 
 body {
-	background-color: #000;
+	background-color: #1f1d2e;
 	color: var(--bs-body-color);
 }
 
@@ -977,7 +1002,7 @@ body {
 
 [disabled].rp-add-comment-btn, [disabled].rp-add-comment-btn:focus, [disabled].rp-add-comment-btn:hover, [disabled].rp-bulk-actions-btn, [disabled].rp-bulk-actions-btn:focus, [disabled].rp-bulk-actions-btn:hover, [disabled].rp-entry-button, [disabled].rp-entry-button:focus, [disabled].rp-entry-button:hover {
 	background-color: var(--bg-color);
-	color: #d3d4d8;
+	color: #e0def4;
 }
 
 .rp-state-current-file .rp-entry-callout-comment, .rp-state-current-file .rp-entry-callout-comment::after {
@@ -993,7 +1018,7 @@ body {
 }
 
 .spinner-container  >span {
-    color: #22293e;
+    color: #2a273f;
 }
 
 #layout-dropdown-btn:hover {
@@ -1092,7 +1117,7 @@ body {
 	position: absolute;
 	right: 0;
 	transition: height .5s;
-	/* color: #000; */
+	/* color: #1f1d2e; */
     filter: brightness(0) invert(1);
 
 
@@ -1116,7 +1141,7 @@ body {
 }
 .review-panel-new .review-panel-entry.review-panel-entry-highlighted, .review-panel-new .review-panel-entry.review-panel-entry-selected {
 	border: 1px solid var(--accentColor);
-	box-shadow: 0 4px 12px 0 rgba(30,37,48,.12),0 2px 4px rgba(30,37,48,.08);
+	box-shadow: 0 4px 12px 0 rgba(35,33,54,.12),0 2px 4px rgba(35,33,54,.08);
 	margin-left: var(--spacing-01);
 }
 
