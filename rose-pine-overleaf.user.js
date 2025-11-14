@@ -34,6 +34,7 @@ GM_addStyle ( `
   /* UI Elements */
   --editor-toolbar-bg: var(--bg-color);
   --bs-dropdown-bg: var(--bg-color);
+  --dropdown-background: #232136;
   --bs-dropdown-header-color: var(--textColor);
   --actionColor: var(--accentColor) !important;
   --link-ui: var(--accentColor) !important;
