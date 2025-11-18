@@ -29,6 +29,38 @@ GM_addStyle(`
 	color: var(--bg-color);
 }
 
+.theme-dark .rui-section {
+	background-color: var(--bg-color);
+	border: 2px solid var(--accent-color);
+}
+
+.theme-dark .course-section .sectionname > a {
+	color: var(--accent-color);
+}
+
+.theme-dark .rui-course-header-btn .rui-course-header-btn-icon {
+	color: var(--accent-color) !important;
+}
+
+.theme-dark a:hover {
+	color: var(--bg-color) !important;
+}
+
+.theme-dark .rui-course-header-btn:hover > h3 > a {
+	color: var(--bg-color);
+}
+
+
+.theme-dark .rui-course-header-btn:hover {
+	background-color: var(--accent-color);
+	color: var(--bg-color) !important;
+}
+
+.theme-dark .rui-course-header-btn {
+	color: var(--bg-color) !important;
+	background-color: color-mix(in srgb, var(--accent-color) 25%, transparent);
+}
+
 .theme-dark .btn-outline-secondary, .theme-dark .comment-area .fd a[id*="cancel"], .comment-area .fd .theme-dark a[id*="cancel"], .theme-dark .visibleifjs .btn, .visibleifjs .theme-dark .btn, .theme-dark .gradingform_guide.editor .addcriterion input, .gradingform_guide.editor .addcriterion .theme-dark input, .theme-dark .gradingform_guide.editor .addcomment input, .gradingform_guide.editor .addcomment .theme-dark input, .theme-dark .gradingform_rubric_ranges.editor .addlevel input, .gradingform_rubric_ranges.editor .addlevel .theme-dark input, .theme-dark #page-grade-grading-manage .definition-preview .btn.floatright, #page-grade-grading-manage .definition-preview .theme-dark .btn.floatright {
 	color: var(--bg-color);
 	border: 1px solid #3C4043;
