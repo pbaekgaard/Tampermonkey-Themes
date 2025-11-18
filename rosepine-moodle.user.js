@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         New Userscript (Rosé Pine Moon)
+// @name         Rosé Pine Moon for Moodle
 // @namespace    http://tampermonkey.net/
 // @version      2025-05-07
 // @description  Rosé Pine Moon theme
