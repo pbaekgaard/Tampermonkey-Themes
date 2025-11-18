@@ -55,9 +55,21 @@ GM_addStyle(`
 	background-color: var(--accent-color);
 	color: var(--bg-color) !important;
 }
+.theme-dark .secondary-navigation .navigation .nav-tabs .nav-link.active {
+	color: var(--bg-color);
+	background-color: color-mix(in srgb, var(--accent-color) 50%, transparent);
+}
+.theme-dark .secondary-navigation .navigation .nav-tabs .nav-link:hover {
+	background-color: var(--accent-color);
+	color: #e6eaf7;
+}
 
 .theme-dark .rui-course-header-btn {
 	color: var(--bg-color) !important;
+	background-color: color-mix(in srgb, var(--accent-color) 25%, transparent);
+}
+
+.theme-dark .moremenu .nav-tabs {
 	background-color: color-mix(in srgb, var(--accent-color) 25%, transparent);
 }
 
