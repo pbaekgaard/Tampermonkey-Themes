@@ -63,7 +63,15 @@ GM_addStyle(`
 	background-color: var(--accent-color);
 	color: #e6eaf7;
 }
+.theme-dark .btn-drawer:hover {
+	border-color: var(--accent-color);
+	color: #e6eaf7;
+}
 
+.theme-dark .drawer-left-toggle .btn-drawer--left {
+	color: #E8EAED;
+	background: color-mix(in srgb, var(--accent-color) 25%, transparent);
+}
 .theme-dark .rui-course-header-btn {
 	color: var(--bg-color) !important;
 	background-color: color-mix(in srgb, var(--accent-color) 25%, transparent);
