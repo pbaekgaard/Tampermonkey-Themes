@@ -12,12 +12,29 @@
 GM_addStyle(`
 :root {
     --bg-color: #232136;       /* Rosé Pine Moon base */
-    --accent-color: #eb6f92;   /* Rosé Pine Moon love */
+    --accent-color: #c4a7e7;   /* Rosé Pine Moon iris */
 }
 
 :focus-visible {
 	outline: none !important;
 }
+
+.theme-dark .btn--darkmode {
+	background-color: var(--accent-color);
+	color: var(--bg-color);
+}
+
+.theme-dark .alert-warning, .theme-dark #page-mod-choice-view #notice p, #page-mod-choice-view #notice .theme-dark p {
+	background-color: var(--accent-color);
+	color: var(--bg-color);
+}
+
+.theme-dark .btn-outline-secondary, .theme-dark .comment-area .fd a[id*="cancel"], .comment-area .fd .theme-dark a[id*="cancel"], .theme-dark .visibleifjs .btn, .visibleifjs .theme-dark .btn, .theme-dark .gradingform_guide.editor .addcriterion input, .gradingform_guide.editor .addcriterion .theme-dark input, .theme-dark .gradingform_guide.editor .addcomment input, .gradingform_guide.editor .addcomment .theme-dark input, .theme-dark .gradingform_rubric_ranges.editor .addlevel input, .gradingform_rubric_ranges.editor .addlevel .theme-dark input, .theme-dark #page-grade-grading-manage .definition-preview .btn.floatright, #page-grade-grading-manage .definition-preview .theme-dark .btn.floatright {
+	color: var(--bg-color);
+	border: 1px solid #3C4043;
+	background-color: var(--accent-color);
+}
+
 .fc-button-primary:not(:disabled):active:focus,
 .fc-button-primary:not(:disabled).fc-button-active:focus {
 	box-shadow: none;
