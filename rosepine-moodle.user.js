@@ -61,6 +61,15 @@ GM_addStyle(`
 	background-color: color-mix(in srgb, var(--accent-color) 25%, transparent);
 }
 
+.theme-dark .secondary-navigation .navigation .nav-tabs .nav-link:hover {
+	background-color: var(--accent-color);
+	color: var(--bg-color);
+}
+
+.theme-dark .moremenu .nav-tabs {
+	background-color: color-mix(in srgb, var(--accent-color) 25%, transparent);
+}
+
 .theme-dark .btn-outline-secondary, .theme-dark .comment-area .fd a[id*="cancel"], .comment-area .fd .theme-dark a[id*="cancel"], .theme-dark .visibleifjs .btn, .visibleifjs .theme-dark .btn, .theme-dark .gradingform_guide.editor .addcriterion input, .gradingform_guide.editor .addcriterion .theme-dark input, .theme-dark .gradingform_guide.editor .addcomment input, .gradingform_guide.editor .addcomment .theme-dark input, .theme-dark .gradingform_rubric_ranges.editor .addlevel input, .gradingform_rubric_ranges.editor .addlevel .theme-dark input, .theme-dark #page-grade-grading-manage .definition-preview .btn.floatright, #page-grade-grading-manage .definition-preview .theme-dark .btn.floatright {
 	color: var(--bg-color);
 	border: 1px solid #3C4043;
