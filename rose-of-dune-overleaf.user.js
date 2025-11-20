@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         Overleaf Rose Pine Moon Theme
+// @name         Overleaf Rose of Dune Theme
 // @namespace    http://tampermonkey.net/
 // @version      2024-12-20
-// @description  A soft, rosy Moon palette for Overleaf
+// @description  A soft, Rose of Dune palette for Overleaf
 // @author       pbaekgaard
 // @match        https://www.overleaf.com/project/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=overleaf.com
@@ -13,52 +13,47 @@ GM_addStyle ( `
 
 :root {
   /* Base colors */
-  --bg-color: #232136 !important; /* Base */
-  --bg-color-secondary: color-mix(in srgb, var(--bg-color) 85%, white 15%);
+  --bg-color: #F5E6D3 !important; /* Base - sand */
+  --bg-color-secondary: #EBD1B8; /* Panels / lighter background */
+  --bg-color-dark: color-mix(in srgb, var(--bg-color) 100%, black 10%); /* Darker background variant */
+  --bg-color-darker: color-mix(in srgb, var(--bg-color) 100%, black 25%); /* Darker background variant 2 */
+  --toolbar-btn-hover-bg-color: var(--accentColor);
 
-  /* Accent / Rose Pine */
-  --accentColor: #c4a7e7 !important; /* Iris */
-  --accentColorSecondary: #9ccfd8;
+  /* Accent / Rose of Dune */
+  --accentColor: #D9A06B !important; /* Cursor / accent - gold */
+  --accentColorSecondary: #B36E5B; /* Highlights / darker rose-gold */
+  --accentColorHover: color-mix(in srgb, var(--accentColor) 80%, white 20%); /* Lighter accent for hover */
+  --accentColorHover2: color-mix(in srgb, var(--accentColor) 70%, white 30%); /* Another hover variant */
+  --project-name-color: var(--accentColor);
 
   /* Cursor */
   --cursorColor: var(--accentColor); /* Accent color */
 
   /* Text */
-  --textColor: #e0def4 !important; /* Text */
-  --editorTextColor: #f4efff;
+  --textColor: #3C2B20 !important; /* Foreground / main text */
+  --textColorSubtle: #7A6A57; /* Comments - muted cocoa-brown */
+  --editorTextColor: var(--textColor); /* Bright text / off-white */
 
   /* Changed lines / Highlights */
-  --lineChanged: #44415a80; /* Highlight */
-  --editorActiveLine: #2a273f;
+  --lineChanged: rgba(217, 160, 107, 0.2); /* Highlight using accent color with opacity */
+  --editorActiveLine: var(--bg-color-secondary); /* Active line background */
 
-/* Rose Pine Moon */
+  /* Syntax highlighting colors */
+  --tok-typeName: #C87C6A; /* Functions - rose-gold */
+  --tok-punctuation: #6B5843; /* Operators / punctuation */
+  --tok-keyword: #D28C74; /* Keywords - coral-rose */
+  --tok-attributeValue: #B88642; /* Strings - gold-bronze */
+  --tok-literal: #7CA973; /* Constants / numbers - gold-green */
+  --editor-toggler-bg-color: var(--accentColor);
 
-.tok-typeName {
-  color: #c4a7e7 !important; /* Iris */
-  font-style: italic;
-}
+  /* Border colors */
+  --border-color-neutral: #6B5843; /* Neutral border color */
+  --border-color-subtle: #6B5843; /* Subtle border color */
 
-.tok-punctuation {
-  color: #908caa !important; /* Subtle */
-}
-
-.tok-keyword {
-  color: #eb6f92 !important; /* Love */
-  font-weight: 600;
-}
-
-.tok-attributeValue {
-  color: #f6c177 !important; /* Gold */
-}
-
-.tok-literal {
-  color: #9ccfd8 !important; /* Foam */
-}
-
-.tok-string {
-	color: #E0B3B3;
-}
-
+  /* Shadow colors (using base color with opacity) - converted from sand #F5E6D3 = rgb(245, 230, 211) */
+  --shadow-color-light: rgba(245, 230, 211, .12);
+  --shadow-color-dark: rgba(245, 230, 211, .08);
+  --shadow-color-bg: rgba(245, 230, 211, 0.15);
 
   /* UI Elements */
   --editor-toolbar-bg: var(--bg-color);
@@ -67,13 +62,13 @@ GM_addStyle ( `
   --actionColor: var(--accentColor) !important;
   --link-ui: var(--accentColor) !important;
   --backgroundColor: var(--bg-color) !important;
-  --dropdown-background: #232136;
+  --dropdown-background: var(--bg-color);
   --headerColor: var(--bg-color) !important;
   --file-tree-item-selected-bg: var(--accentColor) !important;
   --bs-nav-link-color: var(--accentColor) !important;
 
   /* Borders and outlines */
-  --outline-bg-color: var(--bg-color-secondary);
+  --outline-bg-color: var(--bg-color-dark);
   --toolbar-filetree-bg-color: var(--bg-color-secondary);
   --editor-resizer-bg-color: var(--bg-color-secondary);
   --outline-border-color: var(--bg-color-secondary);
@@ -83,7 +78,29 @@ GM_addStyle ( `
   --toolbar-header-btn-border-color: var(--bg-color);
 }
 
+/* Rose Pine Moon - Syntax highlighting */
 
+.tok-typeName {
+  color: var(--tok-typeName) !important; /* Iris */
+  font-style: italic;
+}
+
+.tok-punctuation {
+  color: var(--tok-punctuation) !important; /* Subtle */
+}
+
+.tok-keyword {
+  color: var(--tok-keyword) !important; /* Love */
+  font-weight: 600;
+}
+
+.tok-attributeValue {
+  color: var(--tok-attributeValue) !important; /* Gold */
+}
+
+.tok-literal {
+  color: var(--tok-literal) !important; /* Foam */
+}
 
 * {
 --review-panel-bg-color: var(--bg-color);
@@ -108,6 +125,19 @@ GM_addStyle ( `
 	color: var(--review-panel-color);
 }
 
+.outline-item-expand-collapse-btn {
+	background-color: var(--accentColor);
+	border: 0;
+	border-radius: var(--border-radius-base);
+	color: var(--bg-color);
+	display: inline;
+	font-size: inherit;
+	margin-right: calc(var(--spacing-03)*-1);
+	padding: 0;
+	position: relative;
+	vertical-align: inherit;
+}
+
 .review-panel-entry {
 	background-color: var(--backgroundColor);
 	border: 1px solid var(--lineChanged);
@@ -125,6 +155,9 @@ GM_addStyle ( `
 	padding-right: var(--spacing-03);
 }
 
+.outline-item-link-highlight {
+	background-color: var(--accentColor);
+}
 
 .outline-header-expand-collapse-btn {
 	align-items: center;
@@ -495,7 +528,7 @@ color: var(--accentColor) !important;
 
 .review-panel-new .review-panel-entry.review-panel-entry-highlighted, .review-panel-new .review-panel-entry.review-panel-entry-selected {
 	border: 1px solid var(--accentColor);
-	box-shadow: 0 4px 12px 0 rgba(35,33,54,.12),0 2px 4px rgba(35,33,54,.08);
+	box-shadow: 0 4px 12px 0 var(--shadow-color-light), 0 2px 4px var(--shadow-color-dark);
 	margin-left: var(--spacing-01);
 }
 
@@ -525,7 +558,7 @@ color: var(--accentColor) !important;
 }
 
 .d-inline-grid.btn.btn-primary.btn-sm:hover {
-	background-color: rgb(214, 192, 255);
+	background-color: var(--accentColorHover);
 	color: var(--backgroundColor);
 }
 
@@ -535,7 +568,7 @@ color: var(--accentColor) !important;
 }
 
 .review-panel-new .review-panel-entry-header .review-panel-entry-time {
-	color: rgba(196, 167, 231, 1);
+	color: var(--accentColor);
 }
 
 .review-panel-new .review-panel-comment-body {
@@ -548,7 +581,7 @@ color: var(--accentColor) !important;
 
 .review-panel-new .review-panel-comment-input {
 	background-color: var(--backgroundColor);
-	border: solid 1px rgb(110, 106, 134);
+	border: solid 1px var(--border-color-subtle);
 	border-radius: var(--border-radius-base);
 	color: var(--textColor);
 	font-size: var(--rp-base-font-size);
@@ -615,7 +648,7 @@ color: var(--accentColor) !important;
 
 .d-inline-grid.btn.btn-secondary:hover {
 	color: var(--backgroundColor);
-	background-color: rgba(165, 140, 208, 1);
+	background-color: var(--accentColorHover2);
 	border: none;
 }
 
@@ -670,7 +703,7 @@ color: var(--accentColor) !important;
 
 
 .ol-cm-changed-line {
-	background-color: rgba(35, 33, 54, 0.15);
+	background-color: var(--shadow-color-bg);
 	color: var(--textColor);
 }
 
@@ -738,7 +771,7 @@ li.selected > div > div > .badge-tag {
 }
 
 .history-version-main-details > * {
-	color: grey !important;
+	color: var(--textColorSubtle) !important;
 }
 
 .history-react .history-version-details.history-version-selectable:hover {
@@ -841,7 +874,7 @@ color: var(--textColor);
 }
 
 .file-tree ul.file-tree-list li .entity > .entity-name > button.item-name-button {
- color:#e0def4;
+ color: var(--textColor);
 }
 
 .file-tree:not(.multi-selected) ul.file-tree-list li.selected > .entity > .entity-name > button > span {
@@ -870,18 +903,18 @@ transform: translate(180px, 34px) !important;
 
 
 .rp-state-current-file-expanded .rp-entry {
-	background-color: #2a273f;
+	background-color: var(--editorActiveLine);
 }
 
 .rp-comment-input {
 	background-color: var(--editorActiveLine);
-	border: solid 1px #6e6a86;
+	border: solid 1px var(--border-color-neutral);
 	color: var(--textColor);
 }
 
 .rp-nav-item-active {
-	border-top: 3px solid #c4a7e7;
-	color: #c4a7e7;
+	border-top: 3px solid var(--accentColor);
+	color: var(--accentColor);
 }
 
 .rp-nav {
@@ -897,7 +930,7 @@ transform: translate(180px, 34px) !important;
 }
 
 .rp-entry-metadata {
-	color: #908caa;
+	color: var(--textColorSubtle);
 }
 
 .rp-comment-actions > button {
@@ -924,10 +957,10 @@ transform: translate(180px, 34px) !important;
 }
 
 .review-panel {
-	background-color: #2e2a45;
+	background-color: var(--bg-color-darker);
 	border-left: solid 0 var(--editorActiveLine);
 	box-sizing: content-box;
-	color: #908caa;
+	color: var(--textColorSubtle);
 	flex-shrink: 0;
 	font-family: var(--bs-font-sans-serif);
 	font-size: var(--rp-base-font-size);
@@ -951,7 +984,7 @@ transform: translate(180px, 34px) !important;
 
 .toggle-switch-label {
 	color: var(--content-secondary);
-	color: #e0def4;
+	color: var(--textColor);
 }
 
 .toggle-switch {
@@ -993,7 +1026,7 @@ transform: translate(180px, 34px) !important;
 }
 
 .loading-panel {
-	background-color: #2a273f;
+	background-color: var(--editorActiveLine);
 }
 
 .loading {
@@ -1001,7 +1034,7 @@ transform: translate(180px, 34px) !important;
 }
 
 .loading-screen {
- background-color :#2a273f;
+ background-color: var(--editorActiveLine);
 }
 
 .loading-screen .loading-screen-label {
@@ -1009,7 +1042,7 @@ transform: translate(180px, 34px) !important;
 }
 
 body {
-	background-color: #1f1d2e;
+	background-color: var(--bg-color-dark);
 	color: var(--bs-body-color);
 }
 
@@ -1032,7 +1065,7 @@ body {
 
 [disabled].rp-add-comment-btn, [disabled].rp-add-comment-btn:focus, [disabled].rp-add-comment-btn:hover, [disabled].rp-bulk-actions-btn, [disabled].rp-bulk-actions-btn:focus, [disabled].rp-bulk-actions-btn:hover, [disabled].rp-entry-button, [disabled].rp-entry-button:focus, [disabled].rp-entry-button:hover {
 	background-color: var(--bg-color);
-	color: #e0def4;
+	color: var(--textColor);
 }
 
 .rp-state-current-file .rp-entry-callout-comment, .rp-state-current-file .rp-entry-callout-comment::after {
@@ -1048,7 +1081,7 @@ body {
 }
 
 .spinner-container  >span {
-    color: #2a273f;
+    color: var(--editorActiveLine);
 }
 
 #layout-dropdown-btn:hover {
@@ -1171,9 +1204,51 @@ body {
 }
 .review-panel-new .review-panel-entry.review-panel-entry-highlighted, .review-panel-new .review-panel-entry.review-panel-entry-selected {
 	border: 1px solid var(--accentColor);
-	box-shadow: 0 4px 12px 0 rgba(35,33,54,.12),0 2px 4px rgba(35,33,54,.08);
+	box-shadow: 0 4px 12px 0 var(--shadow-color-light), 0 2px 4px var(--shadow-color-dark);
 	margin-left: var(--spacing-01);
 }
+.custom-toggler:hover {
+	background-color: var(--accentColorSecondary);
+}
+.toolbar a.btn-full-height:hover, .toolbar button.btn-full-height:hover {
+	background-color: var(--toolbar-btn-hover-bg-color);
+	color: var(--backgroundColor) !important;
+	text-shadow: none;
+}
+.ol-cm-toolbar {
+	flex: 1;
+	display: flex;
+	overflow-x: hidden;
+	color: var(--textColor);
+}
 
+.file-tree .toolbar .toolbar-left button, .file-tree .toolbar .toolbar-right button {
+	align-items: center;
+	border: none;
+	border-radius: var(--border-radius-base);
+	box-shadow: none;
+	display: inline-flex;
+	height: 24px;
+	justify-content: center;
+	padding: 0;
+	width: 24px;
+	color: var(--textColor);
+}
+
+.outline-header-expand-collapse-btn:hover {
+	background-color: var(--accentColor);
+}
+
+.outline-header button > * {
+	color: var(--textColor);
+}
+
+.outline-item-link {
+	color: var(--textColor);
+}
+	.outline-item-link:focus, .outline-item-link:hover {
+	background-color: var(--accentColor);
+	outline: 0;
+}
 
 ` );
