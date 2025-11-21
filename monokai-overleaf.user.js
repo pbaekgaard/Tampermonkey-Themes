@@ -39,10 +39,10 @@ GM_addStyle ( `
   --editorActiveLine: color-mix(in srgb, var(--bg-color) 95%, var(--accentColor) 5%); /* Active line background */
 
   /* Syntax highlighting colors */
-  --tok-typeName: #78DCE8; /* Functions - blue/cyan */
+  --tok-typeName: #9FC16C; /* Functions - blue/cyan */
   --tok-punctuation: #f0f2f5; /* Operators / punctuation - off-white */
   --tok-keyword: #F25E86; /* Keywords - red/pink */
-  --tok-attributeValue: #F2C063; /* Strings - yellow/gold */
+  --tok-attributeValue: #F8D26B; /* Strings - yellow/gold */
   --tok-literal: #ABA0F2; /* Constants / numbers - magenta/purple */
   --editor-toggler-bg-color: var(--accentColor);
 
