@@ -24,42 +24,20 @@
         if (option) option.click();
     }
 
-    function getCurrentLayout() {
-        const items = document.querySelectorAll("div.layout-dropdown ul.dropdown-menu a.dropdown-item");
-        for (let i = 0; i < items.length; i++) {
-            if (items[i].classList.contains("active")) {
-                return i + 1;
-            }
-        }
-
-        // Try opening dropdown if missing
-        openDropdown();
-        const items2 = document.querySelectorAll("div.layout-dropdown ul.dropdown-menu a.dropdown-item");
-        for (let i = 0; i < items2.length; i++) {
-            if (items2[i].classList.contains("active")) {
-                return i + 1;
-            }
-        }
-        return 1;
-    }
-
-    function cycleLayout() {
-        openDropdown();
-        setTimeout(() => {
-            const current = getCurrentLayout();
-            let next;
-
-            if (current === 1) next = 2;       // Split → Editor
-            else if (current === 2) next = 3;  // Editor → PDF
-            else next = 1;                     // PDF → Split
-
-            clickLayoutOption(next);
-        }, 10);
-    }
-
+    let current = 2;
     function setLayout(n) {
+        console.log(n);
         openDropdown();
         setTimeout(() => clickLayoutOption(n), 10);
+    }
+    function cycleLayout() {
+        let next;
+
+        if (current === 2) next = 3;       // Split → Editor
+        else if (current === 3) next = 4;  // Editor → PDF
+        else next = 2;                     // PDF → Split
+        current = next;
+        setLayout(next);
     }
 
     //----------------------------------------------------
@@ -109,9 +87,9 @@
             if (["y", "1", "2", "3"].includes(key)) e.preventDefault();
 
             if (key === "y") cycleLayout();
-            if (key === "1") setLayout(2);  // Editor
-            if (key === "2") setLayout(3);  // PDF
-            if (key === "3") setLayout(1);  // Split
+            if (key === "1") setLayout(3);  // Editor
+            if (key === "2") setLayout(4);  // PDF
+            if (key === "3") setLayout(2);  // Split
         }
     }, true);
 
