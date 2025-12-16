@@ -15,6 +15,7 @@ GM_addStyle ( `
   --bg-color-secondary: color-mix(in srgb, var(--bg-color) 92%, white 8%);
   --accentColor: #ffcc66 !important;
   --cursorColor: #f29718;
+  --cursorInsertModeColor: #f29718;
   --toolbar-header-btn-border-color: var(--bg-color);
   --accentColorSecondary: #ffcc66;
   --textColor: #afb5c0 !important;
@@ -56,6 +57,27 @@ GM_addStyle ( `
 
 .cm-fat-cursor {
     background-color: var(--cursorColor) !important;
+}
+
+/* Block cursor for all vim modes */
+.cm-editor .cm-cursor {
+    border-left: 8px solid var(--cursorInsertModeColor) !important;
+    background: var(--cm-cursorColor, black) !important;
+    width: 8.20001px !important;
+    height: 16px !important;
+    opacity: 0.8 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    vertical-align: text-bottom !important;
+    transform: translateY(6px) !important;
+    animation: none !important;
+}
+.cm-cursor .cm-cursor-primary {
+  animation: none !important;
+}
+
+@keyframes blink {
+    50% { opacity: 0 !important; }
 }
 
 .review-mode-switcher:focus .review-mode-switcher-toggle-button.editing, .review-mode-switcher:hover .review-mode-switcher-toggle-button.editing {

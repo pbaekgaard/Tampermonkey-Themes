@@ -28,6 +28,7 @@ GM_addStyle ( `
 
   /* Cursor */
   --cursorColor: var(--accentColor); /* Accent color */
+  --cursorInsertModeColor: var(--accentColor);
 
   /* Text */
   --textColor: #3C2B20 !important; /* Foreground / main text */
@@ -116,6 +117,27 @@ GM_addStyle ( `
 
 .cm-fat-cursor {
     background-color: var(--cursorColor) !important;
+}
+
+/* Block cursor for all vim modes */
+.cm-editor .cm-cursor {
+    border-left: 8px solid var(--cursorInsertModeColor) !important;
+    background: var(--cm-cursorColor, black) !important;
+    width: 8.20001px !important;
+    height: 16px !important;
+    opacity: 0.8 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    vertical-align: text-bottom !important;
+    transform: translateY(6px) !important;
+    animation: none !important;
+}
+.cm-cursor .cm-cursor-primary {
+  animation: none !important;
+}
+
+@keyframes blink {
+    50% { opacity: 0 !important; }
 }
 
 .review-mode-switcher:focus .review-mode-switcher-toggle-button.editing, .review-mode-switcher:hover .review-mode-switcher-toggle-button.editing {
