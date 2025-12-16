@@ -28,7 +28,19 @@
     function setLayout(n) {
         console.log(n);
         openDropdown();
-        setTimeout(() => clickLayoutOption(n), 10);
+        setTimeout(() => {
+            clickLayoutOption(n);
+            
+            // Focus the editor when switching to editor-only view (n === 3)
+            if (n === 3) {
+                setTimeout(() => {
+                    const editorElement = document.querySelector('.cm-editor .cm-content');
+                    if (editorElement) {
+                        editorElement.focus();
+                    }
+                }, 100);
+            }
+        }, 10);
     }
     function cycleLayout() {
         let next;
