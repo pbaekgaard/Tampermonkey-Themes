@@ -20,7 +20,7 @@ GM_addStyle ( `
   --toolbar-btn-hover-bg-color: var(--accentColor);
 
   /* Accent / Horizon */
-  --accentColor: #26bbd9 !important; /* Cyan - accent */
+  --accentColor: #29d398 !important; /* Cyan - accent */
   --accentColorSecondary: #e95678; /* Pink - secondary accent */
   --accentColorHover: color-mix(in srgb, var(--accentColor) 80%, white 20%); /* Lighter accent for hover */
   --accentColorHover2: color-mix(in srgb, var(--accentColor) 70%, white 30%); /* Another hover variant */
@@ -40,7 +40,7 @@ GM_addStyle ( `
   --editorActiveLine: color-mix(in srgb, var(--bg-color) 95%, var(--accentColor) 5%); /* Active line background */
 
   /* Syntax highlighting colors */
-  --tok-typeName: #29d398; /* Functions - green */
+  --tok-typeName: #26bbd9;
   --tok-punctuation: #e5e5e5; /* Operators / punctuation - light gray */
   --tok-keyword: #e95678; /* Keywords - pink */
   --tok-attributeValue: #fab795; /* Strings - orange */
