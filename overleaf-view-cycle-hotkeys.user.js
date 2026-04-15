@@ -58,10 +58,7 @@
     function toggleSidebar() {
         // Look for both buttons
         const openBtn = document.querySelector(
-            "button.custom-toggler.custom-toggler-west.custom-toggler-open"
-        );
-        const closedBtn = document.querySelector(
-            "button.custom-toggler.custom-toggler-west.custom-toggler-closed"
+            "#ide-rail-tabs-tab-file-tree"
         );
 
         // If sidebar is OPEN → click the open-btn to close it
@@ -70,14 +67,27 @@
             return;
         }
 
-        // If sidebar is CLOSED → click the closed-btn to open it
-        if (closedBtn) {
-            closedBtn.click();
+        console.warn("Sidebar toggle button not found.");
+    }
+
+    function toggleReview() {
+        // Look for both buttons
+        const openBtn = document.querySelector(
+            "#ide-rail-tabs-tab-review-panel"
+        );
+
+        // If sidebar is OPEN → click the open-btn to close it
+        if (openBtn) {
+            openBtn.click();
             return;
         }
 
         console.warn("Sidebar toggle button not found.");
     }
+
+
+
+
 
     //----------------------------------------------------
     // Hotkeys
@@ -89,6 +99,14 @@
             console.log("pressed ctrl+e");
             e.preventDefault();
             toggleSidebar();
+            return;
+        }
+
+        // Ctrl+R → sidebar review
+        if (e.ctrlKey && !e.shiftKey && !e.altKey && e.key.toLowerCase() === "r") {
+            console.log("pressed ctrl+r");
+            e.preventDefault();
+            toggleReview();
             return;
         }
 
