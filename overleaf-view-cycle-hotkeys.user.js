@@ -103,8 +103,8 @@
         }
 
         // Ctrl+R → sidebar review
-        if (e.ctrlKey && !e.shiftKey && !e.altKey && e.key.toLowerCase() === "r") {
-            console.log("pressed ctrl+r");
+        if (e.ctrlKey && !e.shiftKey && !e.altKey && e.key.toLowerCase() === "q") {
+            console.log("pressed ctrl+q");
             e.preventDefault();
             toggleReview();
             return;
